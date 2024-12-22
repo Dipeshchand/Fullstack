@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <span class="brand">RentV</span>
+        <a href="Premium.html">
+          <button class="primun" style="border-radius: 29px">
+            Premium Subscription
+          </button>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="main.html">Main</a>
+        <a href="traffic.html">Tariff</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="offer.html">Partner with Us</a>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="login.html">
+          <button class="login">Login</button>
+        </a>
+        <a href="sign.html">
+          <button class="signup">Sign Up</button>
+        </a>
+      </div>
+    </div>
+    <br />
+    <div class="mid">Rent . Ride . Explore</div>
+    <br />
+    <form class="login-form" onsubmit="verifyLogin(event)">
+      <label for="phone">Phone</label>
+      <div class="phone-input">
+        <select id="country-code">
+          <option>+91</option>
+          <option>+92</option>
+          <option>+44</option>
+        </select>
+        <br /><br />
+        <input
+          id="phone"
+          type="text"
+          placeholder="Enter your phone number"
+          required
+        />
+      </div>
+
+      <label for="password">Password</label>
+      <div class="password-input">
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <div class="checkbox-row">
+        <label>
+          <input type="checkbox" /> Remember password?
+        </label>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+
+      <div class="checkbox-row">
+        <label>
+          <input type="checkbox" checked /> Get updates on Calls/WhatsApp
+        </label>
+      </div>
+
+      <button type="submit" class="login-button">Login with Password</a></button>
+      <div class="divider">OR</div>
+      <button type="button" class="otp-button">Login with OTP</button>
+    </form>
+    <script>
+      function verifyLogin(event) {
+        event.preventDefault();
+        const validPhone = "1234567890";
+        const validPassword = "password123";
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        if (!/^\d{10}$/.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return;
+        }
+        if (phone === validPhone && password === validPassword) {
+          alert("Login successful! Welcome to RentV.");
+          window.location.href = "main.html";
+        } else {
+          alert("Invalid phone number or password. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>

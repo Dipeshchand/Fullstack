@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            background: #f4eeff;
+            color: #424874;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #424874;
+        }
+        .weather-info {
+            background: #dcd6f7;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body ng-app="weatherApp" ng-controller="WeatherController">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Weather App</h1>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter city name" ng-model="city">
+        </div>
+        <button class="btn btn-primary btn-block" ng-click="getWeather()">Get Weather</button>
+
+        <div class="weather-info mt-4" ng-if="weatherData">
+            <h3 class="text-center">{{ weatherData.name }}</h3>
+            <p class="text-center">{{ weatherData.weather[0].description | uppercase }}</p>
+            <p class="text-center"><strong>Temperature:</strong> {{ weatherData.main.temp }}°C</p>
+            <p class="text-center"><strong>Humidity:</strong> {{ weatherData.main.humidity }}%</p>
+            <p class="text-center"><strong>Wind Speed:</strong> {{ weatherData.wind.speed }} km/h</p>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('weatherApp', []);
+        app.controller('WeatherController', ['$scope', '$http', function($scope, $http) {
+            $scope.city = '';
+            $scope.weatherData = null;
+
+            $scope.getWeather = function() {
+                if (!$scope.city.trim()) {
+                    alert('Please enter a city name!');
+                    return;
+                }
+
+                const apiKey = 'f94e29a28c6701444dd46bf288788198'; 
+                // Fixing the API URL syntax by using backticks for string interpolation
+                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${$scope.city}&units=metric&appid=${apiKey}`;
+
+                $http.get(apiUrl).then(function(response) {
+                    $scope.weatherData = response.data;
+                }).catch(function(error) {
+                    console.error(error);
+                    alert('City not found or an error occurred. Please try again.');
+                });
+            };
+        }]);
+    </script>
+</body>
+</html>

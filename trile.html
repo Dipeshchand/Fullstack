@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Premium.css" />
+    <title>RentV</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="logo">
+        <span class="brand">RentV</span>
+        <button class="primun" style="border-radius: 29px">
+          Premium Subscription
+        </button>
+      </div>
+
+      <div class="nav-links">
+        <a href="main.html">Main</a>
+        <a href="traffic.html">Tariff</a>
+        <a href="#">What's New?</a>
+        <a href="#">Offers</a>
+        <a href="#">Partner with Us</a>
+      </div>
+
+      <div class="auth-buttons">
+        <a
+          href="file:///Users/amritsingh/Desktop/JavaScript/project/RentV/login.html"
+        >
+          <button class="login">Login</button></a
+        >
+        <a
+          href="file:///Users/amritsingh/Desktop/JavaScript/project/RentV/sign.html"
+        >
+          <button class="signup">Sign Up</button></a
+        >
+      </div>
+    </div>
+    <div class="image-container">
+      <img src="pre.png" alt="Premium Image" style="width: 100%" />
+    </div>
+    <div class="delivery-container">
+      <h3 class="title">BOOKING DATE</h3>
+      <div class="inputs">
+        <div class="input-box">
+          <input type="date" id="delivery-date" placeholder="Date" />
+          <span class="icon">📅</span>
+        </div>
+        <div class="input-box">
+          <input type="time" id="delivery-time" placeholder="Time" />
+          <span class="icon">⏰</span>
+        </div>
+        <button class="search-btn" onclick="done()">SEARCH</button>
+      </div>
+    </div>
+    <div class="imagemid">
+      <img src="mmm.png" style="width: 100%" />
+    </div>
+    <div class="imagemid">
+      <img src="How.png" style="width: 100%" />
+    </div>
+    <div class="middleW">WHAT'S INCLUDED</div>
+
+    <script>
+      function done() {
+        const timeInput = document.getElementById("delivery-time");
+        const dateInput = document.getElementById("delivery-date");
+        const selectedTime = timeInput.value;
+        const selectedDate = dateInput.value;
+        const today = new Date().toISOString().split("T")[0];
+        if (!selectedDate) {
+          alert("Please select a delivery date.");
+          return;
+        }
+        if (!selectedTime) {
+          alert("Please select a delivery time.");
+          return;
+        }
+        if (selectedDate < today) {
+          alert("Delivery date cannot be in the past.");
+          return;
+        }
+        alert(`Delivery scheduled for ${selectedDate} at ${selectedTime}`);
+        window.location.href = "traffic.html";
+      }
+    </script>
+  </body>
+</html>

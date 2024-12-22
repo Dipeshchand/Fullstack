@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="sign.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <span class="brand">RentV</span>
+        <a href="Premium.html">
+          <button class="primun" style="border-radius: 29px">
+            Premium Subscription
+          </button>
+        </a>
+      </div>
+
+      <div class="nav-links">
+        <a href="main.html">Main</a>
+        <a href="traffic.html">Tariff</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="partner.html">Partner with Us</a>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="login.html">
+          <button class="login">Login</button>
+        </a>
+        <a href="sign.html">
+          <button class="signup">Sign Up</button>
+        </a>
+      </div>
+    </div>
+    <br />
+    <div class="mid">Rent . Ride . Explore</div>
+    <br />
+    <form class="login-form" onsubmit="verifySignUp(event)">
+      <input
+        id="name"
+        placeholder="Name as per Aadhaar/Passport"
+        required
+        style="width: 290px;"
+      />
+      <input
+        id="email"
+        placeholder="Email"
+        required
+        style="width: 290px;"
+      />
+      <label for="password" style="width: 150px;">Password</label>
+      <div class="password-input">
+        <div class="phone-input">
+          <select id="country-code">
+            <option>+91</option>
+            <option>+92</option>
+            <option>+44</option>
+          </select>
+          <br /><br />
+          <input
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+            style="width: 290px;"
+          />
+        </div>
+        <br /><br />
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          required
+          style="width: 290px;"
+        />
+      </div>
+      <button type="submit" class="otp-button">Sign Up</button>
+    </form>
+
+    <script>
+      function verifySignUp(event) {
+        event.preventDefault(); 
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        if (name.length < 3) {
+          alert("Name must be at least 3 characters long.");
+          return;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+        if (!/^\d{10}$/.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return;
+        }
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters long.");
+          return;
+        }
+        alert("Sign Up successful! Welcome to RentV.");
+        window.location.href = "main.html";
+      }
+    </script>
+  </body>
+</html>

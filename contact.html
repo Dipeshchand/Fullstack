@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="contact.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <span class="brand">RentV</span>
+        <a href="Premium.html">
+          <button class="primun" style="border-radius: 29px">
+            Premium Subscription
+          </button>
+        </a>
+      </div>
+
+      <div class="nav-links">
+        <a href="main.html">Main</a>
+        <a href="traffic.html">Tariff</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="partner.html">Partner with Us</a>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="login.html">
+          <button class="login">Login</button>
+        </a>
+        <a href="sign.html">
+          <button class="signup">Sign Up</button>
+        </a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="map-section">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509515!2d144.95373531550468!3d-37.81627974202112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f0301c39%3A0xfb0b4f4089b5a2c5!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1635777168366!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+        >
+        </iframe>
+      </div>
+      <div class="form-section">
+        <h2>Write to Us</h2>
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email address" required />
+          <input type="tel" placeholder="Phone number" required />
+          <textarea placeholder="Message" rows="4" required></textarea>
+          <button type="submit" onclick="event.preventDefault(); confirm();">
+            Send
+          </button>
+          <div class="modal" id="confirma">
+            <div class="modal-content">
+              <h3>Query Register!</h3>
+
+              <p>
+                "Thank you for your valuable feedback!
+              </p>
+
+              <button class="close-modal" onclick="closeModal()">
+                Processed
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+     <div class="what">
+         <a href="https://wa.me/9347645827?" class="whatsapp-btn" target="_parent">
+             <i class="fab fa-whatsapp"></i>
+         </a>
+     </div>
+
+    <script>
+      function confirm() {
+        const modal = document.getElementById("confirma");
+        modal.style.display = "flex"; 
+      }
+      function closeModal() {
+        const modal = document.getElementById("confirma");
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
